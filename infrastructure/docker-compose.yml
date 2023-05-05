@@ -2,7 +2,7 @@ version: 3
 services:
   database:
     image: mysql:latest
-    container_name: cached-number-service-mysql
+    container_name: dices-service-mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -11,20 +11,20 @@ services:
       - 3306:3306
   db-adminer:
     image: adminer
-    container_name: cached-number-service-mysqladmin
+    container_name: dices-service-mysqladmin
     restart: always
     ports:
       - 8300:8080
   redis:
     image: redis:latest
-    container_name: cached-number-service-redis
+    container_name: dices-service-redis
     restart: always
   application:
     build:
       dockerfile: "./Dockerfile"
       context: "."
-    container_name: cached-number-service-app
+    container_name: dices-service-app
     ports:
       - 8100:80
     volumes:
-      - "../web/:/usr/share/nginx/html"
+      - "../:/usr/share/nginx/html"
