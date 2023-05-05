@@ -21,9 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Roll a set of dices
-Route::get('/dices/{dices}/roll', [DiceController::class, 'show'])
-    ->where('dices', Dices::DICES_STRING_PATTERN)
-    ->name('dices_roll');
+Route::get('/dices/{dices}/roll', [DiceController::class, 'show'])->name('dices_roll');
 
 Route::get('/phpinfo', function() {
     phpinfo();
