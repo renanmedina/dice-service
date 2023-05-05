@@ -8,11 +8,14 @@ class DiceController extends Controller
 {
     public function show(Request $request) {
         // 1d4, 2d10, 4d8, etc ...
-        $dices = $request->get('dices');
-        
-    }
+        $dicesInput = $request->get('dices');
+        $diceResults = \App\Classes\Dice::rollSetFrom($dicesInput);
+        $rollResults = array_sum($diceResults);
 
-    private function parseDices(String $dices) {
-
+        return response()->json([
+            $dicesInput => $rollResults,
+            "result" => $rollResults,
+            "dices_results" => $diceResults
+        ]);
     }
 }

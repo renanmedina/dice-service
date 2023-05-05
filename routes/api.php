@@ -18,9 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route to simulate APM Tracing, logs, etc...
-Route::get('/numbers/random', [\App\Http\Controllers\RandomNumber::class, 'index'])->name('random_numbers');
-
+// Roll a set of dices
 Route::get('/dice/roll', [\App\Http\Controllers\DiceController::class, 'show'])->name('dice_roll');
 
 Route::get('/phpinfo', function() {
