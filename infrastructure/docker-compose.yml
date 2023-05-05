@@ -20,11 +20,11 @@ services:
     container_name: cached-number-service-redis
     restart: always
   application:
-    build: 
+    build:
       dockerfile: "./Dockerfile"
       context: "."
     container_name: cached-number-service-app
     ports:
       - 8100:80
     volumes:
-      - "../:/usr/share/nginx/html"
+      - "../web/:/usr/share/nginx/html"

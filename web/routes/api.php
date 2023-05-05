@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Lucky\Dices;
+use App\Http\Controllers\DiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Roll a set of dices
-Route::get('/dice/roll', [\App\Http\Controllers\DiceController::class, 'show'])->name('dice_roll');
+Route::get('/dices/{dices}/roll', [DiceController::class, 'show'])
+    ->where('dices', Dices::DICES_STRING_PATTERN)
+    ->name('dices_roll');
 
 Route::get('/phpinfo', function() {
     phpinfo();
