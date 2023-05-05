@@ -26,6 +26,7 @@ COPY ./new-relic.ini /tmp/newrelic-config.ini
 RUN sed -i \
       -e 's/"REPLACE_WITH_REAL_KEY"/"ed6ac4fde1e3c069036b5bb9f3a116bb5befNRAL"/' \
       -e 's/newrelic.appname = "PHP Application"/newrelic.appname = "DicesService"/' \
+      -e 's/"AGENT_PROCESS_HOST_NAME"/"DicesService-PHPAgent"/' \
       -e 's/;newrelic.daemon.app_connect_timeout =.*/newrelic.daemon.app_connect_timeout=15s/' \
       -e 's/;newrelic.daemon.start_timeout =.*/newrelic.daemon.start_timeout=5s/' \
       /tmp/newrelic-config.ini

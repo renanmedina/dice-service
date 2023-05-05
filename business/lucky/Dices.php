@@ -7,6 +7,7 @@ use Lucky\Dice;
 
 class Dices extends Collection {
     const DICES_STRING_PATTERN = "/([1-9]+)[dD]([0-9]+)/";
+
     private $rolled = false;
 
     static function createFrom(String $dicesPattern) : Dices {
@@ -36,7 +37,7 @@ class Dices extends Collection {
         return $this;
     }
 
-    public function results() : int {
+    public function results() : array {
         return array_map(function($dice) {
             return $dice->getResult();
         }, $this->items);
@@ -50,7 +51,7 @@ class Dices extends Collection {
         return array_sum($this->results());
     }
 
-    public function toJson() : array {
+    public function toJson($options = 0) : array {
         return [
             "result" => $this->totalResult(),
             "dices_results" => $this->dicesResultsJson()
@@ -58,10 +59,8 @@ class Dices extends Collection {
     }
 
     private function dicesResultsJson() : array {
-        $dicesJson = [];
-        foreach($this->items as $dice) {
-            $dicesJson = array_merge($dicesJson, $dice->toJson());
-        }
-        return $dicesJson;
+        return array_map(function($dice) {
+            return $dice->toJson();
+        }, $this->items);
     }
 }
