@@ -15,11 +15,16 @@ class Dices extends Collection {
         preg_match(Dices::DICES_STRING_PATTERN, $dicesPattern, $matches);
 
         if (!count($matches)) {
-            throw new \Exception("Invalid dices pattern");
+            throw new Exceptions\InvalidDicesPatternException("Invalid dices pattern");
         }
 
         $quantity = (int) $matches[1];
         $faces = (int) $matches[2];
+
+        return self::createMultiple($quantity, $faces);
+    }
+
+    static function createMultiple($quantity, $faces) : Dices {
         $dices = [];
         while (count($dices) < $quantity) {
             $dices[] = new Dice($faces);
@@ -49,6 +54,14 @@ class Dices extends Collection {
         }
 
         return array_sum($this->results());
+    }
+
+    public function getFaces() : int {
+        if (!$this->count()) {
+            throw new Exceptions\EmptyDicesSetException();
+        }
+
+        return $this->first()->getFaces();
     }
 
     public function toJson($options = 0) : array {

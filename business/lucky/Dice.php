@@ -17,6 +17,10 @@ class Dice {
         return $this->result;
     }
 
+    public function getFaces(): int {
+        return $this->faces;
+    }
+
     public function getResult() : int {
         return $this->result;
     }
