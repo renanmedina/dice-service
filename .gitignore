@@ -18,3 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 infrastructure/terraform/.terraform/*
+infrastructure/terraform/ssh-keys/*
+!infrastructure/terraform/ssh-keys/.keep
