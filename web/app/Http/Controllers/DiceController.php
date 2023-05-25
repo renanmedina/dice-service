@@ -8,6 +8,6 @@ use Lucky\Dices;
 class DiceController extends Controller
 {
     public function show(Request $request, string $dicesInput) {
-        return view('dice_roll', ['dices_input' => $dicesInput]);
+        return view('dice_roll', ['dices_input' => $dicesInput, 'user_ip' => $request->ip()]);
     }
 }

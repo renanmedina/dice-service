@@ -22,4 +22,20 @@
 
         <button type="button" class="flex-none bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" wire:click="roll">Relançar</button>
     </div>
+
+    <div>
+        @if (!empty($results_history))
+            <div class="grid grid-columns-1 h-80 overflow-y-auto text-white pr-4">
+                <span class="text-lg mb-5">Histórico de resultados: </span>
+                @foreach ($results_history as $historyItem)
+                <div class="block mb-4">
+                    {{ $historyItem->readableTime() }}
+                    <span class="block">
+                        {{ $historyItem->dice_pattern }}: {{ $historyItem->total_result }} ({{ $historyItem->dicesValuesSumString() }})
+                    </span>
+                </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
 </div>

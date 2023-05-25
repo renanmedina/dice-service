@@ -67,13 +67,20 @@ class Dices extends Collection {
     public function toJson($options = 0) : array {
         return [
             "result" => $this->totalResult(),
-            "dices_results" => $this->dicesResultsJson()
+            "dices_results" => $this->dicesResultsJson(),
+            "dices_values" => $this->dicesValuesJson()
         ];
     }
 
     private function dicesResultsJson() : array {
         return array_map(function($dice) {
             return $dice->toJson();
+        }, $this->items);
+    }
+
+    private function dicesValuesJson() : array {
+        return array_map(function($dice) {
+            return $dice->getResult();
         }, $this->items);
     }
 }

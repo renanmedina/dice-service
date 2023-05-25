@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('number_cacheds', function (Blueprint $table) {
+        Schema::create('roll_result_histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
+            $table->string('dice_pattern');
+            $table->integer('total_result');
+            $table->json('dices_results');
+            $table->string('user_ip')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('number_cached');
+        Schema::dropIfExists('roll_result_histories');
     }
 };
