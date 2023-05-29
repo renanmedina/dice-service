@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('dice_pattern');
             $table->integer('total_result');
-            $table->json('dices_results');
+            $table->string('dices_results');
             $table->string('user_ip')->nullable();
             $table->timestamps();
         });
