@@ -1,4 +1,4 @@
-<div style="min-width: 220px">
+<div style="min-width: 320px">
     <div class="grid grid-rows-4 grid-cols-1 items-center">
         <div class="mb-5 text-center">
             <h3 class="text-white text-4xl text-center">{{count($dices)}}xd{{$dices->getFaces()}}</h3>
