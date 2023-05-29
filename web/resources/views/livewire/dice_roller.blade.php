@@ -1,4 +1,4 @@
-<div>
+<div style="min-width: 220px">
     <div class="grid grid-rows-4 grid-cols-1 items-center">
         <div class="mb-5 text-center">
             <h3 class="text-white text-4xl text-center">{{count($dices)}}xd{{$dices->getFaces()}}</h3>
@@ -25,7 +25,7 @@
 
     <div>
         @if (!empty($results_history))
-            <div class="grid grid-columns-1 h-80 overflow-y-auto text-white pr-4">
+            <div class="h-80 overflow-y-auto text-white pr-4">
                 <span class="text-lg mb-5">Histórico de resultados: </span>
                 @foreach ($results_history as $historyItem)
                 <div class="block mb-4">
