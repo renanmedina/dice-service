@@ -35,6 +35,7 @@ resource "aws_instance" "dice-service-host" {
   key_name = aws_key_pair.dice-service-host.key_name
 
   tags = {
+    Name = "ec2-dice-service"
     Service = "dice-service"
     Environment = "production"
   }

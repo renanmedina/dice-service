@@ -11,13 +11,13 @@ class RollResultHistory extends Model
 
     public $fillable = ['dice_pattern', 'total_result', 'dices_results', 'user_ip'];
 
-    public function dicesValuesSumString(): string {
+    public function dicesValuesSumString() : string {
         $results = json_decode($this->dices_results, true);
         $dicesValues = $results['dices_values'];
         return implode(" + ", $dicesValues);
     }
 
-    public function readableTime(): string {
+    public function readableTime() : string {
         $createdAt = $this->created_at;
         return $createdAt->diffForHumans();
     }
